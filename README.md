@@ -27,6 +27,4 @@ To retrieve a user by ID: show User 123
 To update a user's email address: update User 123 email "newemail@example.com"
 To delete a user: destroy User 123
 To list all users: all User
-To count the number of users: count User
-
-
+To count the number of users: count User.
