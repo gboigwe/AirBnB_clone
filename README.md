@@ -1,3 +1,5 @@
+### AirBnB Project
+
 Description of the project:
 
 The AirBnB clone project is a web application that replicates the core functionality of the popular accommodation rental platform, AirBnB. The project aims to create a command-line interface (CLI) for managing AirBnB objects, such as users, listings, and bookings. This CLI will allow users to perform operations such as creating, retrieving, updating, and deleting objects, as well as performing various operations and computations on these objects.
@@ -22,9 +24,9 @@ Examples:
 
 Here are some examples of how to use the command interpreter:
 
-To create a new user: create User
-To retrieve a user by ID: show User 123
-To update a user's email address: update User 123 email "newemail@example.com"
-To delete a user: destroy User 123
-To list all users: all User
-To count the number of users: count User.
+- To create a new user: create User
+- To retrieve a user by ID: show User 123
+- To update a user's email address: update User 123 email "newemail@example.com"
+- To delete a user: destroy User 123
+- To list all users: all User
+- To count the number of users: count User.
