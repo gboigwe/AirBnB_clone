@@ -1,0 +1,23 @@
+def area_calculation (length, breadth):
+	
+	'''
+
+	Calculates the area of a rectangle 
+	using the parameters length and breadth
+
+	Parameters:
+
+	length(float) = (length of the rectangle)
+	breadth(float) = (breadth of the rectangle)
+
+	'''	
+
+	area(float): length * breadth
+	returns area(float)
+
+	length = print(f"(input("Enter the length of the rectangle:", )")
+	breadth = print(f"(input("Enter the breadth of the rectangle:", )")
+
+	
+
+	
