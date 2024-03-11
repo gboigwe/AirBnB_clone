@@ -1,14 +1,25 @@
 #!/usr/bin/python3
+"""
+Creating a command prompt
+    It runs the console that handles basic:
+        create
+        read
+        update
+        delete
+        update
+"""
+
+
 import cmd
+import uuid
+import json
 from models.base_model import BaseModel
+from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
     """Impliment a command line action"""
     prompt = "(hbnb) "
-    models = {
-            "BaseModel": BaseModel
-            }
 
     def do_create(self, arg):
         args = arg.split()
@@ -16,13 +27,19 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         model = args[0]
-        if model not in self.models:
+        if model != "BaseModel":
             print("** class doesn't exist **")
             return
-        create_instance = self.models[model]()
-        print(create_instance.id)
+        create_instance = BaseModel()
+        create_instance.save()
+        print(create_instance)
+
+    
 
     def emptyline(self):
+        """This prevents repeating the previous action
+            Rather it turns to a new line waiting for
+            next action call"""
         pass
 
     def do_quit(self, arg):
