@@ -2,7 +2,7 @@ def trial area_calculation (length, breadth):
 	
 	'''
 
-	Calculates the area of a rectangle 
+	Calculates the area of a rectangle.
 	using the parameters length and breadth
 
 	Parameters:
