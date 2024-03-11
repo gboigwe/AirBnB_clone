@@ -6,6 +6,7 @@
 import uuid
 from datetime import datetime
 import json
+import models
 
 
 class BaseModel:
@@ -24,6 +25,7 @@ class BaseModel:
             created_at to actual time
             updated_at to updated time
         """
+
         if kwargs:
             for key, value in kwargs.items():
                 if key == '__class__':
@@ -37,6 +39,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+            models.storage.new(self)
 
     def __str__(self):
         """
@@ -50,6 +53,7 @@ class BaseModel:
         Assigns a new datetime whenever updated is called
         """
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """

@@ -32,7 +32,7 @@ class HBNBCommand(cmd.Cmd):
             return
         create_instance = BaseModel()
         create_instance.save()
-        print(create_instance)
+        print(create_instance.id)
 
     def do_show(self, arg):
         args = arg.split()
