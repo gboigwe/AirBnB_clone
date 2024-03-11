@@ -74,7 +74,15 @@ class HBNBCommand(cmd.Cmd):
         print(sto_all)
         del sto_all[key_class]
     
-    
+    def do_all(self, arg):
+        args = arg.split()
+        model = args[0]
+        if model != "BaseModel":
+            print("** class doesn't exist **")
+            return
+        sto_all = BaseModel()
+        p = str(sto_all)
+        print(f'["{p}"]')
 
     def emptyline(self):
         """This prevents repeating the previous action
