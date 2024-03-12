@@ -37,5 +37,5 @@ class FileStorage:
                     obj_class = eval(class_name)
                     obj_instance = obj_class(**obj_data)
                     self.__objects[obj_key] = obj_instance
-        except json.JSONDecodeError:
-            print("Invalid JSON data in the file")
+        except FileNotFoundError:
+            pass
