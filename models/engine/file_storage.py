@@ -1,16 +1,42 @@
 #!/usr/bin/python3
+"""
+Handles the serialization and deserialization
+of transfer of json formation
+"""
+
+
 import json
 import os
 from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 class FileStorage:
+    """
+    FileStorage: Handles what is stored,
+        all dictionary being returned
+        reload the stored json
+    """
+
     __file_path = "file.json"
     __objects = {}
     def all(self):
+        """
+        Calls and return all object
+        """
+
         return self.__objects
 
     def new(self, obj):
+        """Creates a new instance of the class
+            with a new id
+        """
+
         key = "{}.{}".format(obj.__class__.__name__, obj.id)
         self.__objects[key] = obj
 
@@ -18,7 +44,9 @@ class FileStorage:
         """
         Serializes __objects to the JSON file
             file path: __file_path = "file.json"
+            And stores the json file
         """
+
         got_obj = self.__objects
         my_obj = {}
         for obj_key, obj_val in got_obj.items():
@@ -27,6 +55,12 @@ class FileStorage:
             json.dump(my_obj, fjd)
 
     def reload(self):
+        """
+        Deserializes the json that has been stored to
+        a dictionary
+        From JSON to DICTIONARY
+        """
+
         if not os.path.exists(self.__file_path):
             return
         try:
@@ -37,5 +71,5 @@ class FileStorage:
                     obj_class = eval(class_name)
                     obj_instance = obj_class(**obj_data)
                     self.__objects[obj_key] = obj_instance
-        except FileNotFoundError:
-            pass
+        except json.JSONDecodeError:
+            print("Invalid JSON data in the file")
