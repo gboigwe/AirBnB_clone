@@ -3,8 +3,6 @@
     Basemode - This is the base model class
     Other classes will inherit from it
 """
-
-
 import uuid
 from datetime import datetime
 import json
@@ -27,7 +25,7 @@ class BaseModel:
             created_at to actual time
             updated_at to updated time
         """
-
+        
         if kwargs:
             for key, value in kwargs.items():
                 if key == '__class__':
