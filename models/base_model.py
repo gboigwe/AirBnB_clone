@@ -3,6 +3,8 @@
     Basemode - This is the base model class
     Other classes will inherit from it
 """
+
+
 import uuid
 from datetime import datetime
 import json
