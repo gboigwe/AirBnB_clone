@@ -129,7 +129,7 @@ class HBNBCommand(cmd.Cmd):
             obj = "[{}], ({}), {}".format(
                 val.__class__.__name__, val.id,
                 val.__dict__)
-            lis_key.append(obj)
+            lis_key.append(obj.__str__())
         print(lis_key)
 
     def do_update(self, arg):
