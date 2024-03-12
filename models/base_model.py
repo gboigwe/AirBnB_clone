@@ -25,7 +25,7 @@ class BaseModel:
             created_at to actual time
             updated_at to updated time
         """
-        
+
         if kwargs:
             for key, value in kwargs.items():
                 if key == '__class__':
@@ -45,7 +45,9 @@ class BaseModel:
         """
         Returns the formated string of class and variables
         """
-        return "[{}] ({}) ({})".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}] ({}) ({})".format(
+            self.__class__.__name__,
+            self.id, self.__dict__)
 
     def save(self):
         """

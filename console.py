@@ -75,11 +75,13 @@ class HBNBCommand(cmd.Cmd):
             return
         sto_all = storage.all()
         for key, val in sto_all.items():
-            print("[{}] ({}) {}".format(val.__class__.__name__, val.id, val.__dict__))
+            print("[{}] ({}) {}".format(
+                val.__class__.__name__,
+                val.id, val.__dict__))
 
     def do_destroy(self, arg):
         """Destroy an instance of a model
-        
+
         Args:
             arg: The string with the model name and id
             separated
@@ -182,6 +184,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     do_EOF = do_quit
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
