@@ -126,7 +126,7 @@ class HBNBCommand(cmd.Cmd):
         sto_all = storage.all()
         lis_key = []
         for key, val in sto_all.items():
-            obj = "[{}], ({}), {}".format(
+            obj = "[{}] ({}) {}".format(
                 val.__class__.__name__, val.id,
                 val.__dict__)
             lis_key.append(obj.__str__())
