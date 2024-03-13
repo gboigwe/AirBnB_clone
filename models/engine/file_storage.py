@@ -25,6 +25,9 @@ class FileStorage:
 
     __file_path = "file.json"
     __objects = {}
+    all_class_dict = {"BaseModel": BaseModel, "User": User, "Place": Place,
+                  "Amenity": Amenity, "City": City, "Review": Review,
+                  "State": State}
     def all(self):
         """
         Calls and return all object
@@ -67,9 +70,7 @@ class FileStorage:
             with open(self.__file_path, "r") as fjl:
                 my_obj = json.load(fjl)
                 for obj_key, obj_data in my_obj.items():
-                    class_name, obj_id = obj_key.split('.')
-                    obj_class = eval(class_name)
-                    obj_instance = obj_class(**obj_data)
+                    obj_instance = self.all_class_dict[obj_data['__class__']](**obj_data)
                     self.__objects[obj_key] = obj_instance
-        except json.JSONDecodeError:
-            print("Invalid JSON data in the file")
+        except FileNotFoundError:
+            pass
