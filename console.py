@@ -25,6 +25,24 @@ from models.place import Place
 from models.review import Review
 
 
+def parse(arg):
+    curly_braces = re.search(r"\{(.*?)\}", arg)
+    brackets = re.search(r"\[(.*?)\]", arg)
+    if curly_braces is None:
+        if brackets is None:
+            return [i.strip(",") for i in split(arg)]
+        else:
+            lexer = split(arg[:brackets.span()[0]])
+            retl = [i.strip(",") for i in lexer]
+            retl.append(brackets.group())
+            return retl
+    else:
+        lexer = split(arg[:curly_braces.span()[0]])
+        retl = [i.strip(",") for i in lexer]
+        retl.append(curly_braces.group())
+        return retl
+
+
 class HBNBCommand(cmd.Cmd):
     """Impliment a command line action"""
     prompt = "(hbnb) "
@@ -94,12 +112,12 @@ class HBNBCommand(cmd.Cmd):
             arg : the argument passed to the command
         """
 
-        args = arg.split()
+        args = parse(arg)
         if len(args) == 0:
             print("** class name missing **")
             return
         model = args[0]
-        if model != "BaseModel":
+        if model not in HBNBCommand.__classes:
             print("** class doesn't exist **")
             return
         if len(args) < 2:
@@ -125,12 +143,12 @@ class HBNBCommand(cmd.Cmd):
         Returns: None
         """
 
-        args = arg.split()
+        args = parse(arg)
         if len(args) == 0:
             print("** class name missing **")
             return
         model_name = args[0]
-        if model_name != "BaseModel":
+        if model_name not in HBNBCommand.__classes:
             print("** class doesn't exist **")
             return
         if len(args) < 2:
@@ -155,9 +173,9 @@ class HBNBCommand(cmd.Cmd):
                     the command prompt
         """
 
-        args = arg.split()
+        args = parse(arg)
         model = args[0]
-        if model != "BaseModel":
+        if len(arg) > 0 and model not in HBNBCommand.__classes:
             print("** class doesn't exist **")
             return
         sto_all = storage.all()
@@ -172,7 +190,7 @@ class HBNBCommand(cmd.Cmd):
     def do_count(self, arg):
         """Usage: count <class> or <class>.count()
         Retrieve the number of instances of a given class."""
-        argl = parse(arg)
+        args = parse(arg)
         count = 0
         for obj in storage.all().values():
             if argl[0] == obj.__class__.__name__:
@@ -188,14 +206,14 @@ class HBNBCommand(cmd.Cmd):
             arg : Checks for the argument passed
         """
 
-        args = arg.split()
+        args = parse(arg)
 
         if not args:
             print("** class name missing **")
             return
 
         model_name = args[0]
-        if model_name != "BaseModel":
+        if model_name not in HBNBCommand.__classes:
             print("** class doesn't exist **")
             return
         if len(args) < 2:
