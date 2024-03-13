@@ -1,23 +1,26 @@
-def trial area_calculation (length, breadth):
-	
-	'''
+#!/usr/bin/python3
 
-	Calculates the area of a rectangle.
-	using the parameters length and breadth
+def calculate_area(length, width):
+    """Calculate the area of a rectangle."""
+    return length * width
 
-	Parameters:
 
-	length(float) = (length of the rectangle)
-	breadth(float) = (breadth of the rectangle)
+def calculate_perimeter(length, width):
+    """Calculate the perimeter of a rectangle."""
+    return 2 * (length + width)
 
-	'''	
 
-	area(float): length * breadth
-	returns area(float)
+def main():
+    """Main function to demonstrate area and perimeter calculation."""
+    length = float(input("Enter the length of the rectangle: "))
+    width = float(input("Enter the width of the rectangle: "))
 
-	length = print(f"(input("Enter the length of the rectangle:", )")
-	breadth = print(f"(input("Enter the breadth of the rectangle:", )")
+    area = calculate_area(length, width)
+    perimeter = calculate_perimeter(length, width)
 
-	
+    print("Area of the rectangle:", area)
+    print("Perimeter of the rectangle:", perimeter)
 
-	
+
+if __name__ == "__main__":
+    main()
