@@ -40,8 +40,9 @@ class FileStorage:
             with a new id
         """
 
-        key = "{}.{}".format(obj.__class__.__name__, obj.id)
-        self.__objects[key] = obj
+        if obj:
+            key = "{}.{}".format(obj.__class__.__name__, obj.id)
+            self.__objects[key] = obj
 
     def save(self):
         """
@@ -64,13 +65,11 @@ class FileStorage:
         From JSON to DICTIONARY
         """
 
-        if not os.path.exists(self.__file_path):
-            return
         try:
             with open(self.__file_path, "r") as fjl:
                 my_obj = json.load(fjl)
-                for obj_key, obj_data in my_obj.items():
-                    obj_instance = self.all_class_dict[obj_data['__class__']](**obj_data)
-                    self.__objects[obj_key] = obj_instance
+            for obj_key, obj_data in my_obj.items():
+                obj_instance = self.all_class_dict[obj_data['__class__']](**obj_data)
+                self.__objects[obj_key] = obj_instance
         except FileNotFoundError:
             pass
