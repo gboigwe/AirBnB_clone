@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def calculate_area(length, width):
     """Calculate the area of a rectangle."""
     return length * width
@@ -22,4 +24,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
