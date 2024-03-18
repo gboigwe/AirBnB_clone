@@ -13,6 +13,12 @@
 .filters h3 {
     margin-bottom: -20px;
 }
+.filters h3 {
+    font-weight: 600;
+}
+.filters h4 {
+    font-weight: 400;
+}
 button {
     font-size: 18px;
     background-color: #FF5A5F;
