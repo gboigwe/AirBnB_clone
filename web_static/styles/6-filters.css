@@ -7,8 +7,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    object-fit: contain;
-    overflow: hidden;
 }
 .filters h3 {
     margin-bottom: -20px;
@@ -38,8 +36,40 @@ button:hover {
     border-right: 1px solid #DDDDDD;
     margin-left: 5%;
 }
+.locations .popover {
+    display: none;
+    background-color: #FAFAFA;
+    border: 1px solid #DDDDDD ;
+    border-radius: 4px;
+    width: 120%;
+    margin-left: -20%;
+    margin-top: 21.5px;
+    text-align: start;
+}
+.locations:hover .popover {
+    display: block;
+}
+.popover ul, li {
+    list-style-type: none;
+}
+.popover h3 {
+    margin: 0;
+}
 .amenities {
     height: 100%;
     width: 25%;
     margin-left: -5%;
+}
+.amenities .popover {
+    display: none;
+    background-color: #FAFAFA;
+    border: 1px solid #DDDDDD ;
+    border-radius: 4px;
+    width: 120%;
+    margin-left: -25%;
+    margin-top: 21.5px;
+    text-align: start;
+}
+.amenities:hover .popover {
+    display: block;
 }
